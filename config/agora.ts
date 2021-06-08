@@ -17,12 +17,12 @@ const rtc: {
 
 const options = {
   // Pass your app ID here.
-  appId: "b27e05b2a44940e2b5869b35f00e66d4",
+  appId: "8e919adcb1b54defad0993a96aa8a64b",
   // Set the channel name.
   channel: "hello",
   // Pass a token if your project enables the App Certificate.
   token:
-    "006b27e05b2a44940e2b5869b35f00e66d4IACpdAir87YLiDQUTQEkgR8LH+N/sAuZvkl10IBEiOA444amEDYAAAAAEADGEkMQWmTAYAEAAQBeZMBg"
+    "0068e919adcb1b54defad0993a96aa8a64bIACoBIqPiJdEfVqnNy9g1H09qFDD1GHMaEPpoMvE6CNH/IamEDYAAAAAEADGEkMQAxXBYAEAAQADFcFg"
 };
 
 export async function startBasicCall() {
