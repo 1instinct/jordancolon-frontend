@@ -9,10 +9,14 @@ import { Header } from "../components";
 import { ThemeProvider } from "@emotion/react";
 import { theme } from "../styles/theme";
 import { GlobalStyles } from "../styles/global-styles";
+import { startBasicCall } from "../config/agora";
 
 const queryClient = new QueryClient();
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  React.useEffect(() => {
+    startBasicCall();
+  });
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>

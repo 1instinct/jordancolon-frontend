@@ -14,8 +14,7 @@ export const ProductList: React.FC<ProductListProps> = () => {
   return (
     <section>
       <div className="products-row">
-        {data?.data?.map((product, index) => {
-          console.warn("product: ", product);
+        {data?.data?.map((product) => {
           const imageId =
             Array.isArray(product.relationships.images.data) &&
             product.relationships.images.data[0]?.id;
