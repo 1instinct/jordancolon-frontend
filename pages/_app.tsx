@@ -16,7 +16,7 @@ const queryClient = new QueryClient();
 export default function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
     startBasicCall();
-  });
+  }, []);
   return (
     <QueryClientProvider client={queryClient}>
       <Hydrate state={pageProps.dehydratedState}>

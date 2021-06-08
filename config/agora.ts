@@ -1,8 +1,4 @@
-import AgoraRTC, {
-  IAgoraRTCClient,
-  IMicrophoneAudioTrack,
-  ICameraVideoTrack
-} from "agora-rtc-sdk-ng";
+import { IAgoraRTCClient, IMicrophoneAudioTrack, ICameraVideoTrack } from "agora-rtc-sdk-ng";
 
 const rtc: {
   client: IAgoraRTCClient | null;
@@ -33,6 +29,7 @@ export async function startBasicCall() {
   /**
    * Put the following code snippets here.
    */
+  const AgoraRTC = (await import("agora-rtc-sdk-ng")).default;
   rtc.client = AgoraRTC.createClient({ mode: "rtc", codec: "h264" });
   const uid = await rtc.client.join(options.appId, options.channel, options.token, null);
 
