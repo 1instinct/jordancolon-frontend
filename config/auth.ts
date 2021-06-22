@@ -3,7 +3,6 @@
 import { initReactQueryAuth } from "react-query-auth";
 import { IAccount } from "@spree/storefront-api-v2-sdk/types/interfaces/Account";
 import { spreeClient } from "./spree";
-import { storage } from "./storage";
 
 interface LoginUser {
   username: string;
@@ -20,16 +19,17 @@ interface SpreeUser {
 
 const authConfig = {
   loadUser: async () => {
-    const token = storage.getToken();
-    console.warn("TOKEN: ", token);
+    const storage = (await import("./storage")).default;
+    const token = await storage.getToken();
     if (token?.access_token && token?.token_type === "Bearer") {
       const response = await spreeClient.account.accountInfo({ bearerToken: token.access_token });
       if (response.isSuccess()) {
         console.warn("USER LOADED: ", response.success());
         return response.success();
+      } else {
+        console.warn(response.fail());
+        return null;
       }
-      console.warn(response.fail());
-      return null;
     }
     return null;
   },
@@ -37,6 +37,7 @@ const authConfig = {
     const response = await spreeClient.authentication.getToken(data as LoginUser);
     if (response.isSuccess()) {
       const result = response.success();
+      const storage = (await import("./storage")).default;
       storage.setToken(result);
       const user = await authConfig.loadUser();
       return user;
@@ -60,6 +61,7 @@ const authConfig = {
     }
   },
   logoutFn: async () => {
+    const storage = (await import("./storage")).default;
     storage.clearToken();
   }
 };

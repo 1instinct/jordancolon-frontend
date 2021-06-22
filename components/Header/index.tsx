@@ -2,116 +2,126 @@ import React from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { HeaderProps } from "./types";
-import Sticky from "react-sticky-el";
 import { useAuth } from "../../config/auth";
+import { CartModal } from "../Cart/CartModal";
 
-const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
 export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
   const { user, logout } = useAuth();
+  const [showCart, setShowCart] = React.useState(false);
+  const toggleCart = () => setShowCart(!showCart);
 
   return (
     <header>
-      <div className="top-header">
-        <Link href="/">
-          <a className={pathname === "/" ? "is-active" : ""}>Home</a>
-        </Link>
-        <div className="logo">
-          <Link href="/">
-            <a className={pathname === "/" ? "is-active" : ""}>LOGO</a>
-          </Link>
+      <div className="siteHeader">
+        <div className="cart-container">
+          <CartModal visible={showCart} />
         </div>
-        <>
+        <div className="siteHeader__section">
+          <div className="siteHeader__item siteHeaderLogo">
+            <Link href="/">
+              <a className={pathname === "/" ? "is-active" : ""}>LOGO</a>
+            </Link>
+          </div>
+        </div>
+        <div className="siteHeader__section">
           {user ? (
-            <div className="rightSide">
-              <div>{user.data.attributes.email}</div>
-              <button onClick={logout}>LOGOUT</button>
-            </div>
+            <>
+              <div className="siteHeader__item siteHeaderButton">{user.data.attributes.email}</div>
+              <>
+                <button className="siteHeader__item siteHeaderButton" onClick={toggleCart}>
+                  CART
+                </button>
+              </>
+              <button className="siteHeader__item siteHeaderButton" onClick={logout}>
+                LOGOUT
+              </button>
+            </>
           ) : (
-            <div className="rightSide">
-              <Link href="/authenticate/login">
-                <a className={pathname === "/authenticate/login" ? "is-active" : ""}>LOG IN</a>
-              </Link>
-              <Link href="/authenticate/signup">
-                <a className={pathname === "/authenticate/signup" ? "is-active" : ""}>SIGN UP</a>
-              </Link>
-            </div>
+            <>
+              <div className="siteHeader__item siteHeaderButton">
+                <Link href="/authenticate/login">
+                  <a>LOG IN</a>
+                </Link>
+              </div>
+              <div className="siteHeader__item siteHeaderButton">
+                <Link href="/authenticate/signup">
+                  <a>SIGN UP</a>
+                </Link>
+              </div>
+            </>
           )}
-        </>
+        </div>
         <style jsx>{`
-          .top-header {
-            padding: 30px 0px;
+          .siteHeader {
+            height: 50px;
+            position: relative;
+            background-color: pink;
+            /**
+             * Lay out the children of this container with
+             * flexbox, which is horizontal by default.
+            */
             display: flex;
-            flex-direction: row;
-            align-items: center;
+
+            /**
+             * Make the container put as much space as possible
+             * between its children, with the children at either
+             * end laying flush against the container's edges.
+            */
             justify-content: space-between;
+
+            padding: 10px;
+            // background-color: #56727c;
           }
-          .rightSide {
-            width: 10%;
+
+          .siteHeader__section {
+            /**
+             * Lay out the children of this container with
+             * flexbox.
+            */
             display: flex;
-            flex-direction: row;
+
+            /**
+             * Align the children in the center, along
+             * the main axis. By default the children will
+             * align along their top edges.
+            */
             align-items: center;
-            justify-content: space-between;
           }
-          .logo {
-            padding: 15px 30px;
-            background: grey;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+          .siteHeader__item {
+            padding: 5px 15px;
+            font-size: 12px;
           }
-          header {
-            margin-bottom: 25px;
+
+          .siteHeader__item + .siteHeader__item {
+            margin-left: 5px;
           }
-          a {
-            font-size: 14px;
-            text-decoration: none;
+
+          .siteHeader__item.is-site-header-item-selected {
+            color: #ffffff;
+            background-color: #415f69;
+            border-radius: 4px;
           }
-          .is-active {
-            text-decoration: underline;
+
+          .siteHeaderLogo {
+            font-size: 20px;
+            line-height: 0;
+            color: white;
+          }
+
+          .siteHeaderButton {
+            cursor: pointer;
+            color: #d9e9ef;
+          }
+          .cart-container {
+            position: absolute;
+            right: 30px;
+            top: 70px;
+            background-color: lime;
           }
         `}</style>
       </div>
-      <Sticky>
-        <div className="bottom-header">
-          {dummyCategories.map((category) => (
-            <Link href="/" key={category}>
-              <a className="category">{category}</a>
-            </Link>
-          ))}
-          <style jsx>{`
-            .bottom-header {
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              justify-content: space-between;
-              flex-wrap: wrap;
-              padding: 30px 0px;
-              background: black;
-            }
-            .category {
-              padding: 15px;
-            }
-            .bottom-header > :first-child {
-              padding-left: 0px;
-            }
-            .bottom-header > :last-child {
-              padding-right: 0px;
-            }
-
-            header {
-              margin-bottom: 25px;
-            }
-            a {
-              font-size: 14px;
-              text-decoration: none;
-            }
-            .is-active {
-              text-decoration: underline;
-            }
-          `}</style>
-        </div>
-      </Sticky>
     </header>
   );
 };
