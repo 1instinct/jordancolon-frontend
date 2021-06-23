@@ -4,11 +4,13 @@ import Link from "next/link";
 import { HeaderProps } from "./types";
 import Sticky from "react-sticky-el";
 import { useAuth } from "../../config/auth";
+import { CartModal } from "../Cart/CartModal";
 
 const dummyCategories = ["Best Sellers", "Latest", "Seasonal", "Luxury", "On Sale", "Coming Soon"];
 export const Header: React.FC<HeaderProps> = (props) => {
   const { pathname } = useRouter();
   const { user, logout } = useAuth();
+  const [cartVisible, setCartVisible] = React.useState(false);
 
   return (
     <header>
@@ -21,33 +23,35 @@ export const Header: React.FC<HeaderProps> = (props) => {
             <a className={pathname === "/" ? "is-active" : ""}>LOGO</a>
           </Link>
         </div>
-        <>
+        <div className="rightSide">
           {user ? (
-            <div className="rightSide">
+            <>
               <div>{user.data.attributes.email}</div>
               <button onClick={logout}>LOGOUT</button>
-            </div>
+            </>
           ) : (
-            <div className="rightSide">
+            <>
               <Link href="/authenticate/login">
                 <a className={pathname === "/authenticate/login" ? "is-active" : ""}>LOG IN</a>
               </Link>
               <Link href="/authenticate/signup">
                 <a className={pathname === "/authenticate/signup" ? "is-active" : ""}>SIGN UP</a>
               </Link>
-            </div>
+            </>
           )}
-        </>
+          <button style={{ marginLeft: 50 }} onClick={() => setCartVisible(!cartVisible)}>
+            CART
+          </button>
+        </div>
         <style jsx>{`
           .top-header {
-            padding: 30px 0px;
+            padding: 30px 15px;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
           }
           .rightSide {
-            width: 10%;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -112,6 +116,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
           `}</style>
         </div>
       </Sticky>
+      <CartModal visible={cartVisible} />
     </header>
   );
 };

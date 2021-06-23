@@ -3,6 +3,7 @@ import { IOrder } from "@spree/storefront-api-v2-sdk/types/interfaces/Order";
 import { IOAuthToken } from "@spree/storefront-api-v2-sdk/types/interfaces/Token";
 import { useQuery } from "react-query";
 import { spreeClient } from "../../config/spree";
+import { QueryKeys } from "../queryKeys";
 
 export const showCart = async () => {
   const storage = (await import("../../config/storage")).default;
@@ -60,5 +61,5 @@ const addItem = async (item: AddItem) => {
 };
 
 export const useCart = () => {
-  return useQuery<IOrder, false>(["cart"], () => showCart());
+  return useQuery<IOrder, false>([QueryKeys.CART], () => showCart());
 };

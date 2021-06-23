@@ -29,6 +29,9 @@ export const CartModal = (props: Props) => {
           background-color: white;
           padding: 50px;
           border: 2px grey solid;
+          position: absolute;
+          top: 150px;
+          right: 50px;
         }
       `}</style>
     </>
