@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { IProducts } from "@spree/storefront-api-v2-sdk/types/interfaces/Product";
 import { spreeClient } from "../../config/spree";
-import { showCart, createCart } from "../useCart/index";
+import { showCart } from "../useCart/index";
 
 showCart();
 
