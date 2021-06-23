@@ -5,7 +5,7 @@ import { QueryKeys } from "../queryKeys";
 
 const fetchProduct = async (id: string): Promise<IProduct> => {
   const response = await spreeClient.products.show(id, {
-    include: "images"
+    include: "images,default_variant"
   });
   console.warn("FETCH PRODUCTS");
   if (response.isSuccess()) {

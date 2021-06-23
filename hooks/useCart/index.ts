@@ -46,17 +46,26 @@ export const showCart = async () => {
   }
 };
 
-const addItem = async (item: AddItem) => {
+export const addItemToCart = async (item: AddItem) => {
   const storage = (await import("../../config/storage")).default;
   const token = await storage.getToken();
   if (!token) {
-    return;
+    const orderToken = storage.getGuestOrderToken();
+    if (orderToken) {
+      const response = await spreeClient.cart.addItem(orderToken, item);
+      if (response.isSuccess()) {
+        return response.success();
+      } else {
+        throw new Error(response.fail().message);
+      }
+    }
+    throw new Error("NO TOKENS FOUND FOR CART");
   }
   const response = await spreeClient.cart.addItem({ bearerToken: token.access_token }, item);
   if (response.isSuccess()) {
     return response.success();
   } else {
-    console.warn(response.fail());
+    throw new Error(response.fail().message);
   }
 };
 
