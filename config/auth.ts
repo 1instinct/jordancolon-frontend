@@ -1,7 +1,10 @@
 // src/lib/auth.ts
 
 import { initReactQueryAuth } from "react-query-auth";
-import { IAccount } from "@spree/storefront-api-v2-sdk/types/interfaces/Account";
+import {
+  ForgotPasswordParams,
+  IAccount
+} from "@spree/storefront-api-v2-sdk/types/interfaces/Account";
 import { spreeClient } from "./spree";
 
 interface LoginUser {
@@ -64,6 +67,20 @@ const authConfig = {
     const storage = (await import("./storage")).default;
     storage.clearToken();
   }
+};
+
+export const forgotPassword = async (data: unknown) => {
+  const response = await spreeClient.account.forgotPassword(data as ForgotPasswordParams);
+
+  if (response.isSuccess()) {
+    console.warn("RESET PASSWORD SUCCESS: ", response.success());
+
+    return response.success();
+  }
+
+  console.warn("RESET PASSWORD FAIL: ", response.fail());
+
+  throw response.fail();
 };
 
 export const { AuthProvider, useAuth } = initReactQueryAuth<IAccount | null, string>(authConfig);

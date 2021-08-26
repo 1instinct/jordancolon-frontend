@@ -13,6 +13,7 @@ import {
   updateEmailForm
 } from "./constants";
 import { useAuth } from "../../config/auth";
+import { forgotPassword } from "../../config/auth";
 
 const FieldContainer = styled.div`
   margin: 15px 0px;
@@ -141,6 +142,7 @@ const SignupForm = () => {
 };
 
 const ForgotPasswordForm = () => {
+  const router = useRouter();
   return (
     <>
       <h1>{forgotPasswordForm.title}</h1>
@@ -148,12 +150,13 @@ const ForgotPasswordForm = () => {
         initialValues={forgotPasswordForm.fields}
         validationSchema={forgotPasswordForm.validate}
         onSubmit={(values, { setSubmitting }) => {
-          forgotPasswordForm
-            .onSubmit(values)
-            .then(() => {
+          forgotPassword({ user: values })
+            .then((result) => {
               setSubmitting(false);
+              // TODO redirect back to LOGIN and display a message
+              router.push("/");
             })
-            .catch(() => {
+            .catch((result) => {
               setSubmitting(false);
             });
         }}>
