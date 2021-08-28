@@ -1,11 +1,37 @@
 import * as React from "react";
 import { useRouter } from "next/router";
-import { Layout } from "../components";
+import {
+  Layout,
+  ProductHeader,
+  ProductVariations,
+  PackSizeInventory,
+  PointsEarned,
+  AddToCart
+} from "../components";
 import { useProduct } from "../hooks/useProduct";
 import { useMutation, useQueryClient } from "react-query";
 import { addItemToCart } from "../hooks/useCart";
 import { QueryKeys } from "../hooks/queryKeys";
 import * as tracking from "../config/tracking";
+import styled from "@emotion/styled";
+
+const TotalPrice = styled.h3`
+  label: TotalPrice;
+  font-family: "Bebas Neue";
+  font-weight: 400;
+  font-size: 24.99px;
+  line-height: 29.98px;
+  color: #000;
+  margin: 0;
+`;
+
+const PriceRow = styled.div`
+  label: PriceRow;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-end;
+`;
 
 const ProductDetail = () => {
   const router = useRouter();
@@ -18,6 +44,7 @@ const ProductDetail = () => {
     }
   });
 
+  console.log("data", data);
   React.useEffect(() => {
     if (isSuccess) {
       tracking.trackEvent({
@@ -48,14 +75,26 @@ const ProductDetail = () => {
 
     return (
       <Layout>
-        <div className="product-container">
+        <ProductHeader />
+        <ProductVariations />
+        <PackSizeInventory />
+        <PriceRow>
+          <TotalPrice> TOTAL PRICE $1000 </TotalPrice>
+          <PointsEarned />
+        </PriceRow>
+        <AddToCart />
+
+        {/* <div className="product-container">
           <img src={source} />
           <h1>{data?.data?.attributes?.name}</h1>
           <div>
-            <h3>${data?.data?.attributes?.price}</h3>
+            <PriceBlock>
+              <h3>${data?.data?.attributes?.price}</h3>
+              <span> Per piece </span>
+            </PriceBlock>
           </div>
           <button onClick={handleAddToCart}>ADD TO CART</button>
-        </div>
+        </div> */}
       </Layout>
     );
   }
