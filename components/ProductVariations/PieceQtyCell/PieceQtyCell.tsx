@@ -1,6 +1,6 @@
-import React from 'react';
-import { PieceQtyCellProps } from '../types';
-import styled from '@emotion/styled';
+import React from "react";
+import { PieceQtyCellProps } from "../types";
+import styled from "@emotion/styled";
 
 const PieceQtyCellWrapper = styled.div`
   label: PieceQtyCellWrapper;
@@ -15,4 +15,3 @@ const PieceQtyCellWrapper = styled.div`
 export const PieceQtyCell: React.FC<PieceQtyCellProps> = ({ pieceQty }) => {
   return <PieceQtyCellWrapper>{pieceQty}</PieceQtyCellWrapper>;
 };
-

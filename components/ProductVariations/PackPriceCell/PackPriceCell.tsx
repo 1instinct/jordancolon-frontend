@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { PackPriceCellProps } from '../types';
+import React from "react";
+import styled from "@emotion/styled";
+import { PackPriceCellProps } from "../types";
 
 const PackPriceCellWrapper = styled.div`
   label: PackPriceCellWrapper;

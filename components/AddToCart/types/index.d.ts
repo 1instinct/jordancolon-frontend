@@ -1,3 +1,1 @@
-export interface AddToCartProps {
-
-}
+export interface AddToCartProps {}

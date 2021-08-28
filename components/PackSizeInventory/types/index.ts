@@ -1,5 +1,4 @@
-export interface PackSizeInventoryProps {
-}
+export interface PackSizeInventoryProps {}
 
 export interface QtyPerSizeProps {
   qty: number;
@@ -7,5 +6,5 @@ export interface QtyPerSizeProps {
 }
 
 export interface CellProps {
-    isFirst?: boolean
+  isFirst?: boolean;
 }

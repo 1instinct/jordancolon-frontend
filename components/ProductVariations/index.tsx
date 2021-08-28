@@ -1,1 +1,1 @@
-export { ProductVariations } from './ProductVariations'
+export { ProductVariations } from "./ProductVariations";

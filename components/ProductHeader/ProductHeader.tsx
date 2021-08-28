@@ -13,11 +13,11 @@ const ProductHeaderWrapper = styled.div`
 const Name = styled.h1`
   label: Name;
   color: #000;
-  font-family: 'BEBAS NEUE';
+  font-family: "BEBAS NEUE";
   font-weight: 400;
   font-size: 33.87px;
   line-height: 40.64px;
-`
+`;
 
 export const ProductHeader: React.FC<ProductHeaderProps> = () => {
   return (

@@ -1,1 +1,1 @@
-export * from './PackSizeInventory'
+export * from "./PackSizeInventory";

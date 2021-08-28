@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { AddToCartProps } from './types';
+import React from "react";
+import styled from "@emotion/styled";
+import { AddToCartProps } from "./types";
 
 const AddToCartWrapper = styled.div`
   label: AddToCartWrapper;
@@ -20,7 +20,7 @@ const OuterWrapper = styled.div`
   label: OuterWrapper;
   display: flex;
   justify-content: center;
-`
+`;
 
 export const AddToCart: React.FC<AddToCartProps> = ({}) => {
   return (

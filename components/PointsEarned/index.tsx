@@ -1,1 +1,1 @@
-export * from './PointsEarned';
+export * from "./PointsEarned";
