@@ -3,11 +3,16 @@ import { IProducts } from "@spree/storefront-api-v2-sdk/types/interfaces/Product
 import { spreeClient } from "../../config/spree";
 import { QueryKeys } from "../queryKeys";
 
+// const client = makeClient({
+//   host: "https://crossorigin.me/https://qa.dna-admin.instinct.is",
+// });
+
 const fetchProducts = async (page: number = 1) => {
   const storage = (await import("../../config/storage")).default;
   const token = await storage.getToken();
   const response = await spreeClient.products.list({
-    bearerToken: token ? token.access_token : undefined
+    bearerToken: token ? token.access_token : undefined,
+    // include: "images"
   });
   if (response.isSuccess()) {
     return response.success();

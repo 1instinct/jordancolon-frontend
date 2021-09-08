@@ -140,5 +140,13 @@ export const theme = {
       lineHeight: "7px",
       color: "#000"
     }
+  },
+  breakpoints: {
+    xs: "375",
+    sm: "414",
+    md: "768",
+    lg: "1024",
+    xl: "1280",
+    xxl: "1440"
   }
 };

@@ -163,5 +163,13 @@ declare module "@emotion/react" {
         color: string;
       };
     };
+    breakpoints: {
+      xs: string;
+      sm: string;
+      md: string;
+      lg: string;
+      xl: string;
+      xxl: string;
+    };
   }
 }

@@ -37,6 +37,7 @@
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.58",
     "@spree/storefront-api-v2-sdk": "file:contrib/spree-storefront-api-v2-sdk-4.5.1003.tgz",
+    "cors": "^2.8.5",
     "classnames": "^2.3.1",
     "dotenv-webpack": "^1.7.0",
     "emotion-theming": "^11.0.0",
@@ -59,7 +60,8 @@
     "swiper": "^6.7.5",
     "ua-parser-js": "^0.7.28",
     "webpack": "^4.46.0",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "swr": "^0.5.6"
   },
   "devDependencies": {
     "@babel/plugin-syntax-export-default-from": "^7.14.5",
