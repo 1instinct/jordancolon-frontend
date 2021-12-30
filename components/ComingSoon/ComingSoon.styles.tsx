@@ -37,11 +37,14 @@ export const Text = styled.div`
 
 export const Fade = styled.div`
   width: 100%;
-  height: 300px;
+  height: 50%;
   position: absolute;
   bottom: 0;
   background: rgb(0, 0, 0);
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+    height: 300px;
+  }
 `;
 
 export const Device = styled.img`
@@ -49,6 +52,9 @@ export const Device = styled.img`
   display: flex;
   justify-contents: center;
   position: absolute;
-  bottom: -100px;
+  bottom: -40%;
   width: 150%;
+  @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
+    bottom: -100px;
+  }
 `;
