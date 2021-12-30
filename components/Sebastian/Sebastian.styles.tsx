@@ -26,7 +26,7 @@ export const SebastianImage = styled.div`
   position: relative;
   left: 25px;
   bottom: -25px;
-  background: url("${process.env.CVNA_APP_CDN_URL}/images/sebastian2.png") no-repeat;
+  background: url("images/sebastian2.png") no-repeat;
   background-size: 48px 48px;
   width: 48px;
   height: 48px;
@@ -82,7 +82,7 @@ export const BubbleWrapper = styled.div`
     left: 80px;
     bottom: -30px;
     content: " ";
-    background: url("${process.env.CVNA_APP_CDN_URL}/images/bubble-arrow.svg") no-repeat;
+    background: url("images/bubble-arrow.svg") no-repeat;
     background-size: 29px 16px;
     width: 29px;
     height: 16px;

@@ -7,8 +7,8 @@ export const ComingSoon = () => {
   return (
     <>
       <Container>
-        <Logo src={process.env.LOGO_PATH} />
-        <Text>{process.env.COMING_SOON_COPY}</Text>
+        <Logo src={`${process.env.NEXT_PUBLIC_LOGO_PATH}`} />
+        <Text>{process.env.NEXT_PUBLIC_COMING_SOON_COPY}</Text>
         <NotifyForm />
         <Fade />
         <Device src="/images/beeper_one_masked.png" />
