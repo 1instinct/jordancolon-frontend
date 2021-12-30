@@ -1,12 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-import {
-  SocialContainer,
-  SocialList,
-  SocialListItem,
-  SocialIcon
-} from './SocialLinks.styles';
+import { SocialContainer, SocialList, SocialListItem, SocialIcon } from "./SocialLinks.styles";
 
 export const SocialLinks = () => {
   return (
