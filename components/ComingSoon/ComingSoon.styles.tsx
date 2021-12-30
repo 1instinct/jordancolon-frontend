@@ -11,16 +11,6 @@ export const Container = styled.div`
   overflow: hidden;
 `;
 
-export const Logo = styled.img`
-  width: auto;
-  height: 240px;
-  margin-top: -100px;
-  @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-    width: 90%;
-    height: auto;
-  }
-`;
-
 export const Text = styled.div`
   text-align: center;
   width: 425px;
