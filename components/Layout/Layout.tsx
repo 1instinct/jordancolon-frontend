@@ -2,63 +2,27 @@ import React from "react";
 import styled from "@emotion/styled";
 import { ClassNames } from "@emotion/react";
 import { LayoutProps } from "./types";
-import { MobileMenu, Foot } from "../../components";
-import { menusData } from "../MobileMenu/data/menusData";
-import { Column } from "../Foot/Foot";
-const Logo = styled.div`
-  width: 181px;
-  height: 45px;
-  font-size: 24px;
-  line-height: 45px;
-  text-align: center;
-  margin-bottom: 60px;
-  @media (max-width: 375px) {
-    width: 80px;
-    height: 19.83px;
-    font-size: 10px;
-    line-height: 19.83px;
-    margin-bottom: 55.07px;
-  }
-`;
-const MyLogo: React.FC = () => <Logo>POL</Logo>;
-const CameraIcon = styled.img`
-  width: 11px;
-  height: auto;
-  margin-right: 3.88px;
-  @media (max-width: 375px) {
-    width: 20.71px;
-    height: auto;
-    margin-right: 7.76px;
-  }
-`;
-const FacebookIcon = styled.img`
-  width: 6.81px;
-  height: auto;
-  margin-right: 3.88px;
-  @media (max-width: 375px) {
-    width: 13.63px;
-    height: auto;
-    margin-right: 7.76px;
-  }
-`;
-const PlayIcon = styled.img`
-  width: 12.29px;
-  height: auto;
-  margin-right: 3.88px;
-  @media (max-width: 375px) {
-    width: 24.59px;
-    height: auto;
-    margin-right: 7.76px;
-  }
-`;
-const CircleIcon = styled.img`
-  width: 10.35px;
-  height: auto;
-  @media (max-width: 375px) {
-    width: 20.71px;
-    height: auto;
-  }
-`;
+import { Column, Foot } from "../Foot/Foot";
+
+import {
+  Container,
+  Content,
+  CameraIcon,
+  FacebookIcon,
+  PlayIcon,
+  CircleIcon,
+  Logo
+} from "./Layout.styles";
+
+type LogoTypeFC = {
+  imageFile: string;
+  isDark?: boolean;
+};
+
+export const MyLogo = ({ imageFile, isDark }: LogoTypeFC) => (
+  <Logo src={imageFile} isDark={isDark || false} />
+);
+
 const iconLinks = [
   {
     icon: <CameraIcon src={"/camera.png"} />,
@@ -131,24 +95,25 @@ const columns: Column[] = [
     ]
   }
 ];
-export const Container = styled.main`
-  width: 100%;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  max-height: calc(100% - 235px);
-`;
-export const Content = styled.div`
-  flex: 1;
-  overflow: scroll;
-`;
+// export const Container = styled.main`
+//   flex: 1;
+//   overflow: scroll;
+//   scrollbar-width: none;
+//   &::-webkit-scrollbar {
+//     display: none;
+//   }
+// `;
+// export const Content = styled.div`
+//   flex: 1;
+//   overflow: scroll;
+// `;
 export const Layout: React.FC<LayoutProps> = ({
   children
 }: {
   children: JSX.Element[] | JSX.Element;
 }) => {
   return (
-    <>
+    <Container>
       <Content>
         {children}
         <ClassNames>
@@ -159,11 +124,15 @@ export const Layout: React.FC<LayoutProps> = ({
                   background-color: #000;
                 `
               }}
-              footerData={{ logo: <MyLogo />, columns, mobileIconLinks: iconLinks }}
+              footerData={{
+                logo: <MyLogo imageFile="/logo.png" isDark={false} />,
+                columns,
+                mobileIconLinks: iconLinks
+              }}
             />
           )}
         </ClassNames>
       </Content>
-    </>
+    </Container>
   );
 };

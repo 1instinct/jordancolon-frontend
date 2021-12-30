@@ -63,7 +63,8 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
               keepMounted
               id={`${parentKeyPath}/${item.key}`}
               anchorEl={keyPathMap[`${parentKeyPath}/${item.key}` as keyof typeof keyPathMap]}
-              open={Boolean(keyPathMap[`${parentKeyPath}/${item.key}` as keyof typeof keyPathMap])}>
+              open={Boolean(keyPathMap[`${parentKeyPath}/${item.key}` as keyof typeof keyPathMap])}
+            >
               {item.children.map((v, i) => {
                 return (
                   <MenuItem
@@ -72,7 +73,8 @@ const DesktopMenu: React.FC<IDesktopMenuProps> = (props: IDesktopMenuProps) => {
                       `${parentKeyPath}/${item.key}/${v.key}`,
                       v.key
                     )}
-                    key={parentKeyPath + "/" + item.key + "/" + v.key}>
+                    key={parentKeyPath + "/" + item.key + "/" + v.key}
+                  >
                     {v.pcIcon && v.pcIcon()}
                     {v.name}
                   </MenuItem>

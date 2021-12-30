@@ -5,32 +5,47 @@ export const GlobalStyles = () => (
   <>
     <Global
       styles={css`
+        @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+
         html {
           overflow: hidden;
           width: 100%;
           height: 100%;
         }
+
         body {
-          /* background-image: linear-gradient(
-              180deg,
-              rgba(136, 6, 146, 0.8) 0%,
-              rgba(136, 6, 146, 0.6) 67.71%
-            ),
-            url("images/beeper-bg-1.jpg"); */
-          background: url("images/beeper-bg-1.jpg") no-repeat;
-          background-blend-mode: overlay;
-          background-size: cover;
-          background-position: center;
+          font-family: "ibm condensed medium";
+          font-size: 14px;
+          line-height: 16px;
+          background: black;
+          // background: url("images/beeper-bg-1.jpg") no-repeat;
+          // background-blend-mode: overlay;
+          background-image: #00000;
+          background-image: radial-gradient(at 94% 36%, hsla(273, 81%, 20%, 1) 0, transparent 100%),
+            radial-gradient(at 19% 93%, hsla(299, 100%, 30%, 1) 0, transparent 32%),
+            radial-gradient(at 50% 11%, hsla(0, 0%, 0%, 1) 0, transparent 100%),
+            radial-gradient(at 36% 94%, hsla(264, 75%, 65%, 1) 0, transparent 100%),
+            radial-gradient(at 32% 19%, hsla(261, 78%, 27%, 1) 0, transparent 100%),
+            radial-gradient(at 18% 79%, hsla(242, 100%, 50%, 1) 0, transparent 100%),
+            radial-gradient(at 83% 53%, hsla(124, 85%, 70%, 1) 0, transparent 59%);
+          background-size: 100vw 100vh;
+          background-repeat: no-repeat;
+          // background-position: center;
           color: hotpink !important;
           margin: 0;
           padding: 0;
           width: 100%;
           height: 100%;
+          text-rendering: auto;
+          // -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-display: swap;
+          font-smooth: 2em;
         }
-        * {
+        /* * {
           font-family: Menlo, Monaco, "Lucida Console", "Liberation Mono", "DejaVu Sans Mono",
             "Bitstream Vera Sans Mono", "Courier New", monospace, serif;
-        }
+        } */
         #__next {
           width: 100%;
           height: 100vh;
@@ -39,94 +54,137 @@ export const GlobalStyles = () => (
         }
 
         a {
+          cursor: pointer;
           color: #22bad9;
         }
-        p {
-          font-size: 14px;
-          line-height: 24px;
+
+        h2 {
+          font-size: 28.93px;
+          line-height: 34.72px;
+          margin: 15px 0px;
         }
+
+        h3 {
+          font-size: 24px;
+          line-hegiht: 28.8px;
+          margin: 15px 0px;
+        }
+
+        h4 {
+          font-size: 18px;
+        }
+
+        p {
+          font-family: "Roboto Condensed", sans-serif;
+          font-size: 18px;
+          line-height: 21.09px;
+          font-weight: 400;
+          margin: 10px 0px 20px;
+        }
+
         article {
           margin: 0 auto;
           max-width: 650px;
         }
-        button {
-          align-items: center;
-          background-color: #22bad9;
-          border: 0;
-          color: white;
+
+        svg {
+          margin: 0;
+        }
+
+        .size-selection {
+          justify-content: space-between;
           display: flex;
-          padding: 5px 7px;
+          max-width: 400px;
+        }
+
+        .size-selection button {
+          background-color: white;
+          border: 2px solid black;
+          color: black;
+          max-width: 70px;
+          font-size: 23.24px;
+          line-height: 35.09px;
+          font-weight: bold;
+          padding: 5px 10px;
+        }
+
+        select {
+          font-size: 28.95px;
+          line-height: 34.74px;
+          border: 2px solid #000000;
+          box-sizing: border-box;
           transition: background-color 0.3s;
+          width: 100%;
+          max-width: 400px;
+          text-transform: uppercase;
+          text-align-last: center;
+          background: url("https://cdn1.iconfinder.com/data/icons/pinpoint-action/48/arrow-dropdown-24.png")
+            no-repeat 95% 50%;
+          padding: 10px 10px;
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
         }
-        button:active {
-          background-color: #1b9db7;
-        }
-        button:disabled {
-          background-color: #b5bebf;
-        }
-        button:focus {
+
+        select:active,
+        select:focus {
           outline: none;
         }
-        .bm-burger-button {
-          position: fixed;
-          width: 36px;
-          height: 30px;
-          left: 36px;
-          top: 36px;
+
+        button,
+        .select-size button {
+          font-family: "Bebas Neue", sans-serif;
+          text-align: center;
+          margin: 10px 0px;
+          transition: background-color 0.3s;
+          text-transform: uppercase;
         }
-        .bm-burger-button button:focus {
-          outline: 2px solid #000;
-          outline-offset: 8px;
+
+        button {
+          background-color: #eb8b8b;
+          border: 0;
+          color: white;
+          width: 100%;
+          max-width: 400px;
+          font-size: 29.24px;
+          line-height: 35.09px;
+          font-weight: bold;
+          padding: 10px 10px;
         }
-        .bm-burger-button button:focus + span span.bm-burger-bars {
-          background-color: #c94e50;
+
+        @media screen and (max-width: 800px) {
+          .size-selection button {
+            max-width: 50px;
+          }
         }
-        .right .bm-burger-button {
-          left: initial;
-          right: 36px;
+
+        button:active {
+          background-color: #f75b5b;
         }
-        .bm-burger-bars {
-          background: #000;
+
+        button:focus,
+        .size-selection button:focus {
+          outline: none;
         }
-        .bm-burger-bars-hover {
-          background: #a90000;
-        }
-        .bm-cross-button {
-          height: 24px;
-          width: 24px;
-        }
-        .bm-cross {
-          background: #000;
-        }
-        .bm-menu-wrap {
-          position: fixed;
-          height: 100%;
-          top: 0;
-        }
-        .bm-menu {
-          background: #373a47;
-          padding: 2.5em 1.5em 0;
-          fontsize: 1.15em;
-          height: 100%;
-        }
-        .bm-morph-shape {
-          fill: #373a47;
-        }
-        .bm-item-list {
-          color: #b8b7ad;
-          padding: 0.8em;
-          height: 100%;
-        }
-        .bm-item {
-          display: block;
-          padding: 0.8em;
-        }
-        .bm-overlay {
-          top: 0;
-          background: rgba(0, 0, 0, 0.3);
+        i {
+          color: #000;
         }
         .pc-menu-item {
           color: #000;
+          font-family: "Bebas Neue";
+          font-size: 14px;
+          margin-right: 82px !important;
+        }
+        .pc-menu-wrap {
+          padding-bottom: 30px !important;
+        }
+        .bm-overlay {
+          top: 0;
+        }
+        #__next {
+          display: flex;
+          flex-direction: column;
+          height: 100vh;
         }
       `}
     />

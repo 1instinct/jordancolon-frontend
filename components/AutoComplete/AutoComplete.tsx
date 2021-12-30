@@ -9,27 +9,32 @@ const AutoComplete = ({
   id,
   labelId,
   isVisible,
+  setIsSearchLoading,
   toggleVisibility,
   onSelect,
   query
 }: AutoCompleteProps) => {
-  const { error, status, data, isLoading, isSuccess } = useProducts(1);
+  const {
+    error,
+    status,
+    data,
+    isLoading,
+    isSuccess
+  }: { error: any; status: any; data: any; isLoading: boolean; isSuccess: boolean } =
+    useProducts(1);
   const [page, setPage] = useState(1);
   const [suggestions, setSuggestions] = useState([]);
   // const [error, setError] = useState('');
 
   useEffect(() => {
     // getSearchData();
-    data ? console.log("stuff: ", data) : null;
-    console.log("suggestions: ", suggestions, "data: ", data);
+    // data ? console.log("stuff: ", data) : null;
+    // console.log("suggestions: ", suggestions, "data: ", data);
   }, []);
 
   if (isLoading) {
-    return (
-      <StyledAutoComplete role="listbox" aria-labelledby={labelId} id={id}>
-        <h1>Loading {status}</h1>
-      </StyledAutoComplete>
-    );
+    setIsSearchLoading();
+    return null;
   }
 
   if (error) {
@@ -40,10 +45,11 @@ const AutoComplete = ({
     );
   }
 
+  setIsSearchLoading();
   return (
     <StyledAutoComplete role="listbox" aria-labelledby={labelId} id={id}>
       {isVisible &&
-        data?.data?.map((item, index) => {
+        data?.data?.map((item: any, index: any) => {
           return (
             <Suggestion
               suggestion={item}
