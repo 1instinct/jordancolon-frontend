@@ -10,19 +10,19 @@ export const SocialLinks = () => {
         <SocialList>
           <SocialListItem>
             <a href={process.env.NEXT_PUBLIC_INSTAGRAM_URL} target="_blank">
-              <SocialIcon src="images/social-icon-instagram.png" />
+              <SocialIcon src="/images/social-icon-instagram.png" />
             </a>
           </SocialListItem>
 
           <SocialListItem>
             <a href={process.env.NEXT_PUBLIC_FACEBOOK_URL} target="_blank">
-              <SocialIcon src="images/social-icon-facebook.png" />{" "}
+              <SocialIcon src="/images/social-icon-facebook.png" />{" "}
             </a>
           </SocialListItem>
 
           <SocialListItem>
             <a href={process.env.NEXT_PUBLIC_TWITTER_URL} target="_blank">
-              <SocialIcon src="images/social-icon-twitter.png" />{" "}
+              <SocialIcon src="/images/social-icon-twitter.png" />{" "}
             </a>
           </SocialListItem>
         </SocialList>
