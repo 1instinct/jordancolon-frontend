@@ -117,6 +117,11 @@ export const NotifyText = styled.div`
 `;
 
 export const EmailInput = styled.input<GenericThemeType>`
+  font-family: ${(p) => p.theme.typography.titleSM.fontFamily};
+  font-size: ${(p) => p.theme.typography.titleSM.fontSize};
+  font-weight: ${(p) => p.theme.typography.titleSM.fontWeight};
+  line-height: ${(p) => p.theme.typography.titleSM.lineHeight};
+  color: ${(p) => p.theme.typography.titleSM.color};
   text-align: left;
   width: 300px;
   height: 36.15px;
@@ -192,7 +197,6 @@ export const Button = styled.button<GenericThemeType>`
   font-size: 18px;
   letter-spacing: 1px;
   padding: 0;
-
   @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
   }
 `;
