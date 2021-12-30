@@ -45,6 +45,6 @@ export const Device = styled.img`
   bottom: -40%;
   width: 150%;
   @media screen and (max-width: ${(p) => p.theme.breakpoints.values.sm}px) {
-    bottom: -100px;
+    bottom: -10px;
   }
 `;

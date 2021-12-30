@@ -143,6 +143,7 @@ export const EmailInput = styled.input<GenericThemeType>`
     color: ${(props) => props.theme.colors.pink.primary};
   }
   @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+    -webkit-appearance: none;
     width: 80vw;
     margin: 0 0 0 2.5vw;
   }
@@ -188,7 +189,7 @@ export const Button = styled.button<GenericThemeType>`
   border: 2px solid rgba(255, 0, 138, 0.15);
   box-sizing: border-box;
   box-shadow: -6px -6px 12px rgb(144 0 147 / 11%), 1px 1px 24px rgba(0, 0, 0, 0.33),
-    inset 1px 2px 8px rgba(0, 0, 0, 0.05);
+    inset 1px 2px 8px rgba(0, 0, 0, 0.5);
   border-radius: 36.1511px;
   position: relative;
   top: -46px;
@@ -199,6 +200,7 @@ export const Button = styled.button<GenericThemeType>`
   letter-spacing: 1px;
   padding: 0;
   @media (max-width: ${(p) => p.theme.breakpoints.values.xs}px) {
+    -webkit-appearance: none;
   }
 `;
 
