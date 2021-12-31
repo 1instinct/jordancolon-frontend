@@ -1,13 +1,16 @@
 import React from "react";
-import { NotifyForm, SocialLinks } from "../../components";
-import { Container, Logo, Text } from "./ComingSoon.styles";
+import { Logo, LogoBlob, NotifyForm, SocialLinks } from "../components";
+import { Container, Text, Fade, Device } from "./ComingSoon.styles";
 
 export const ComingSoon = () => {
+  const isServer = typeof window === "undefined";
   return (
     <>
       <Container>
-        <Logo src="Beeper-Logo-v3_@2x.png" />
-        <Text>A NEW MOBILE MUSIC EXPERIENCE COMING TO A “WHERE EVER YOU ARE” NEAR YOU.</Text>
+        <Fade />
+        <Device src="/images/beeper_one_masked.png" />
+        {isServer ? <Logo /> : <LogoBlob />}
+        <Text>{process.env.NEXT_PUBLIC_COMING_SOON_COPY}</Text>
         <NotifyForm />
         <SocialLinks />
       </Container>

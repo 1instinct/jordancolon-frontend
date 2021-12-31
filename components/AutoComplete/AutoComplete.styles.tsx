@@ -1,6 +1,14 @@
 import styled from "@emotion/styled";
 
-export const StyledAutoComplete = styled.div`
+export interface StyledAutoCompleteProps {
+  theme?: {
+    colors: {
+      blue: { primary: string };
+      gray: { background: string };
+    };
+  };
+}
+export const StyledAutoComplete = styled.div<StyledAutoCompleteProps>`
   position: absolute;
   display: block;
   width: 100%;
@@ -22,7 +30,7 @@ export const StyledAutoComplete = styled.div`
   &::-webkit-scrollbar-thumb {
     border-radius: 12px;
     height: 80px;
-    background-color: ${(props) => props.theme.colors.blue.primary};
+    background-color: ${(props) => props.theme.colors.black.primary};
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.33);
     transition: 1s all ease-in-out;
     &:active {
@@ -36,13 +44,24 @@ export const StyledAutoComplete = styled.div`
     background-color: ${(props) => props.theme.colors.gray.background};
   }
 `;
-
-export const StyledSuggestionLink = styled.div`
+export interface StyledSuggestionLinkProps {
+  theme?: {
+    colors: {
+      blue: {
+        primary: string;
+      };
+      gray: {
+        background: string;
+      };
+    };
+  };
+}
+export const StyledSuggestionLink = styled.div<StyledSuggestionLinkProps>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px 12px 40px;
-  color: ${(props) => props.theme.colors.blue.primary};
+  padding: 12px 16px 12px 30px;
+  color: ${(props) => props.theme.colors.black.primary};
 
   font-size: 14px;
   font-weight: 700;
@@ -52,7 +71,7 @@ export const StyledSuggestionLink = styled.div`
   &:hover {
     text-decoration: none;
     background-color: ${(props) => props.theme.colors.gray.background};
-    color: ${(props) => props.theme.colors.blue.primary};
+    color: ${(props) => props.theme.colors.black.primary};
   }
 
   mark {
