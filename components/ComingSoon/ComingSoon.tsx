@@ -3,7 +3,7 @@ import { Logo, LogoBlob, NotifyForm, SocialLinks } from "../components";
 import { Container, Text, Fade, Device } from "./ComingSoon.styles";
 
 export const ComingSoon = () => {
-  const isServer = typeof window === 'undefined';
+  const isServer = typeof window === "undefined";
   return (
     <>
       <Container>
